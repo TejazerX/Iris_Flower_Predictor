@@ -1,0 +1,127 @@
+/* ---------- Light & Dark Gradient Backgrounds ---------- */
+:root {
+    --bg-gradient: linear-gradient(to right, #fefcea, #f1da36);   /* Light yellow gradient */
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --input-color: #000000;
+    --arrow-filter: invert(0%);
+}
+
+body.dark-mode {
+    --bg-gradient: linear-gradient(to right, #1e1e1e, #3c3c3c);  /* Dark gray gradient */
+    --card-bg: #2b2b2b;
+    --text-color: #ffffff;
+    --input-bg: #1e1e1e;
+    --input-border: #ffffff;
+    --input-color: #ffffff;
+    --arrow-filter: invert(100%);
+}
+
+/* ---------- Base Styles ---------- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.container {
+    max-width: 760px;
+}
+
+/* ---------- Card Styling ---------- */
+.card {
+    background-color: var(--card-bg);
+    border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ---------- Typography ---------- */
+h1 {
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* ---------- Input Fields ---------- */
+input[type="number"] {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--input-color);
+    transition: all 0.4s ease;
+}
+
+input[type="number"]::placeholder {
+    color: #aaa;
+}
+
+/* White increment/decrement arrows for dark mode */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    filter: var(--arrow-filter);
+}
+
+/* ---------- Input Focus Effect ---------- */
+input:focus {
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255,193,7,0.25) !important;
+    outline: none;
+}
+
+/* ---------- Submit Button ---------- */
+button[type="submit"] {
+    font-size: 1.1rem;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* ---------- Prediction Result Animation ---------- */
+@keyframes popFade {
+    0% { transform: translateY(20px); opacity: 0; }
+    80% { transform: translateY(-4px); }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.animated-result {
+    animation: popFade 0.6s ease-out;
+}
+
+/* ---------- Dark Mode Switch Styling ---------- */
+.mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    user-select: none;
+}
+
+.mode-toggle label {
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    margin-top: 60px;
+    padding-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* ---------- Fix label and other text elements for dark mode ---------- */
+body.dark-mode label,
+body.dark-mode p,
+body.dark-mode footer,
+body.dark-mode .form-label,
+body.dark-mode .text-muted {
+    color: #ffffff !important;
+}
